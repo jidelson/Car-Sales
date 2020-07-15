@@ -6,27 +6,26 @@ import Total from './components/Total';
 import { initialState, reducer } from './reducers';
 import { createStore } from 'redux';
 import { connect } from 'react-redux';
-import { addFeature } from './actions/actions';
+import { addFeature, removeFeature } from './actions/actions';
 
 export const store = createStore(reducer);
 console.log(store.getState())
 
-const App = (props) => {
+const App = () => {
  
-  // const [newFeature, setNewFeature] = useState()
-  // const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   
 
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={props.car} />
-        <AddedFeatures car={props.car} />
+        <Header car={state.car} />
+        <AddedFeatures car={state.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={props.additionalFeatures} />
-        <Total car={props.car} additionalPrice={props.additionalPrice} />
+        <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
+        <Total car={state.car} additionalPrice={state.additionalPrice} />
       </div>
     </div>
   );
@@ -43,5 +42,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {addFeature}
+  {addFeature, removeFeature}
   )(App);

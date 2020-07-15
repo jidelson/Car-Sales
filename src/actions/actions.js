@@ -1,8 +1,9 @@
+import { bindActionCreators } from "redux"
 
-export const addFeature = () => {
-    return{ type: 'ADD_FEATURE'}
+export const addFeature = (featureId) => {
+    return{ type: 'ADD_FEATURE', payload: featureId}
 }
 
-export const removeFeature = () => {
-    return{ type: 'REMOVE_FEATURE'}
+export const removeFeature = (featureId) => {
+    return{ type: 'REMOVE_FEATURE', payload: featureId}
 }
