@@ -33,6 +33,7 @@ export const initialState = {
         case 'REMOVE_FEATURE':
         return{
           ...state,
+          additionalPrice: state.car.price - action.payload.price,
           car: {
             ...state.car,
             features: state.car.features.filter((feature) => 
