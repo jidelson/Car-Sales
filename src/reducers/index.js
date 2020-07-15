@@ -21,7 +21,9 @@ export const initialState = {
         case 'ADD_FEATURE':
         return {
           ...state,
-          additionalPrice: state.car.price + action.payload.price,
+          // before i had
+          //additionalPrice: state.car.price + action.payload.price,
+          additionalPrice: action.payload.price,
           car: {
             ...state.car,
             features: [...state.car.features, action.payload]
@@ -33,16 +35,15 @@ export const initialState = {
         case 'REMOVE_FEATURE':
         return{
           ...state,
-          additionalPrice: state.car.price - action.payload.price,
           car: {
             ...state.car,
+            price: state.car.price - action.payload.price,
             features: state.car.features.filter((feature) => 
             feature.id !== action.payload.id
             )
-          }
+          },
         };
         default:
             return state;
   }}
 
-  // reducer(undefined, {type: '@@redux/INITs.r.a.n.d.o.m'})
