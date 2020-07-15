@@ -23,7 +23,7 @@ export const initialState = {
           ...state,
           // before i had
           //additionalPrice: state.car.price + action.payload.price,
-          additionalPrice: action.payload.price,
+          additionalPrice: state.additionalPrice + action.payload.price,
           car: {
             ...state.car,
             features: [...state.car.features, action.payload]
